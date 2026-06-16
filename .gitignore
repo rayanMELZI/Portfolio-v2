@@ -40,6 +40,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# Claude Code memory
+.claude/
+
 # Env
 .env.local
 .env*.local
