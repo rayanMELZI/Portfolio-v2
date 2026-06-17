@@ -36,7 +36,9 @@ export async function POST(req: NextRequest) {
       token,
     })
     return NextResponse.json({ url: blob.url })
-  } catch {
-    return NextResponse.json({ error: 'Erreur lors de l\'upload.' }, { status: 500 })
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err)
+    console.error('[upload] Vercel Blob error:', msg)
+    return NextResponse.json({ error: msg }, { status: 500 })
   }
 }
