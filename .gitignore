@@ -42,7 +42,9 @@ next-env.d.ts
 
 # Claude Code memory
 .claude/
+CLAUDE.md
 
 # Env
 .env.local
 .env*.local
+
