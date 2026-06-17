@@ -7,8 +7,10 @@ if (!password) {
 }
 
 bcrypt.hash(password, 10).then(hash => {
-  // Les $ dans le hash doivent être échappés avec \$ dans .env.local (dotenv-expand)
   const escaped = hash.replaceAll('$', String.raw`\$`)
-  console.log(`\nAjoute cette ligne dans ton .env.local :\n`)
-  console.log(`ADMIN_PASSWORD_HASH="${escaped}"\n`)
+  console.log('\n── .env.local (local dev) ──────────────────────────')
+  console.log(`ADMIN_PASSWORD_HASH="${escaped}"`)
+  console.log('\n── Vercel dashboard (production) ───────────────────')
+  console.log(`ADMIN_PASSWORD_HASH=${hash}`)
+  console.log('')
 })
